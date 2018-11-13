@@ -49,8 +49,7 @@ class MyWorker(Worker):
         num_filters = config["num_filters"]
         batch_size = config["batch_size"]
         filter_size = config["filter_size"]
-        epochs = budget
-        print(lr, num_filters, batch_size, filter_size)
+
         # do the actual training
         lc, model = train_and_validate(self.x_train,
                                  self.y_train, self.x_valid, self.y_valid,
@@ -81,7 +80,7 @@ class MyWorker(Worker):
 parser = argparse.ArgumentParser(description='Example 1 - sequential and local execution.')
 parser.add_argument('--budget', type=float,
                     help='Maximum budget used during the optimization, i.e the number of epochs.', default=6)
-parser.add_argument('--n_iterations', type=int, help='Number of iterations performed by the optimizer', default=50)
+parser.add_argument('--n_iterations', type=int, help='Number of iterations performed by the optimizer', default=3)
 args = parser.parse_args()
 
 # Step 1: Start a nameserver
@@ -134,8 +133,9 @@ import hpbandster.visualization as hpvis
 
 hpvis.losses_over_time(all_runs)
 
+
 import matplotlib.pyplot as plt
-plt.savefig("random_search.svg")
+plt.savefig("random_search_incumbent.svg")
 
 # train the network ons more with the optimal hyper parameters found in random search
 lc, model = train_and_validate(w.x_train,
