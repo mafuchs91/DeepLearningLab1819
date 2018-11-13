@@ -50,7 +50,7 @@ class MyWorker(Worker):
         batch_size = config["batch_size"]
         filter_size = config["filter_size"]
         epochs = budget
-        print(lr, num_filters, batch_size, filter_size)
+
         # do the actual training
         lc, model = train_and_validate(self.x_train,
                                  self.y_train, self.x_valid, self.y_valid,
