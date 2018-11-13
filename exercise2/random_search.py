@@ -72,15 +72,13 @@ class MyWorker(Worker):
 
 
 
-        # TODO: Implement configuration space here. See https://github.com/automl/HpBandSter/blob/master/hpbandster/examples/example_5_keras_worker.py  for an example
-
         return config_space
 
 
 parser = argparse.ArgumentParser(description='Example 1 - sequential and local execution.')
 parser.add_argument('--budget', type=float,
                     help='Maximum budget used during the optimization, i.e the number of epochs.', default=6)
-parser.add_argument('--n_iterations', type=int, help='Number of iterations performed by the optimizer', default=3)
+parser.add_argument('--n_iterations', type=int, help='Number of iterations performed by the optimizer', default=50)
 args = parser.parse_args()
 
 # Step 1: Start a nameserver
